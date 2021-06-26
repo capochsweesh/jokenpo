@@ -1,32 +1,43 @@
-import os
 import random
+from time import sleep
+import os
 
 def main():
 
-    list = ["rock", "paper", "scissors"]
+    listajogo = ["Pedra", "Papel", "Tesoura"]
+
+    print("""
+    Suas opções:
+    [ 0 ] Pedra
+    [ 1 ] Papel
+    [ 2 ] Tesoura""")
+    escolha = int(input('Qual a sua jogada? '))
     
+    #tesoura >>> papel
+    #pedra >>> tesoura
+    #papel >>> pedra
+    pcEscolha = random.randint(0,len(listajogo)-1)
+    print('JO')
+    sleep(1)
+    print('KEN')
+    sleep(1)
+    print('PO!!!')
+    print('-='*10)
+    print('Computador jogou {}'.format(listajogo[pcEscolha]))
+    print('Jogador jogou {}'.format(listajogo[escolha]))
+    print('-='*10)
     
-    jokenpo = input('Rock, paper or scissors? ')
+    if pcEscolha == escolha:
+        print('\033[4;36mEMPATE\033[m')
+    elif escolha == 0 and pcEscolha == 2 or escolha == 1 and pcEscolha == 0 or escolha == 2 and pcEscolha == 1:
+        print('\033[4;32mJOGADOR VENCE!\033[m')
+    else:
+        print('\033[4;31mCOMPUTADOR VENCE!\033[m')
     
-    if jokenpo in list:
-        number = random.randint(0,2)
-        result = list[number]
-        print(result)
-        
-        #Rock : paper
-        #paper : scissors
-        #scissors : rock
-        
-        if jokenpo == result:
-            print("That's a draw!")
-        elif jokenpo == list[0] and result == list[1] or jokenpo == list[1] and result == list[2] or jokenpo == list[2] and result == list[0]:
-            print("You lost!, retard")
-        else:
-            print("You won!")
-    
+
 
 if __name__ == "__main__":
-    while(1):
+    while True:
         main()
 
-os.system("pause")
+
